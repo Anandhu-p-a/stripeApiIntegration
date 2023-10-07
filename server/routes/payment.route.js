@@ -68,40 +68,6 @@ paymentRouter.post("/checkout",async(req,res)=>{
 
 
 
-//webhooks for payment confirmation and security
-
-paymentRouter.post('/webhooks', bodyParser.raw({type: 'application/json'}), async (req, res) => {
-    const sig = req.headers['stripe-signature'];
-    let event;
-  
-    try {
-      // Construct event after verifying the signature
-      event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
-    } catch (err) {
-      return res.status(400).send(`Webhook Error: ${err.message}`);
-    }
-  
-    // Handle the event
-    if (event.type === 'checkout.session.completed') {
-      const session = event.data.object; // { id, object, ...}
-  
-      // Perform some operation
-      await handlePaymentSuccess(session);
-    }
-  
-    // Other event types can be handled here
-  
-    // Return a 200 response to acknowledge receipt of the event
-    res.json({received: true});
-  });
-  
-  const handlePaymentSuccess = async (session) => {
-    // Your logic to handle successful payment.
-    // Update the order in the database, send a confirmation email, etc.
-    console.log("Hi from handle payment success , *************** ", )
-    console.log("following is the session ",session)
-  }
-
 
 
 
