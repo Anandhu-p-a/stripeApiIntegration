@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 const bodyParser = require('body-parser');
 //webhook url verification with body parser only and not express.json()
 
-app.post('payment/webhooks', bodyParser.raw({type: 'application/json'}), async (req, res) => {
+app.post('/payment/webhooks', bodyParser.raw({type: 'application/json'}), async (req, res) => {
     const sig = req.headers['stripe-signature'];
     let event;
   
