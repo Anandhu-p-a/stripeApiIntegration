@@ -1,4 +1,5 @@
-require("dotenv").config();
+require("dotenv").config()
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 const express = require("express");
 const { connection } = require("./config/connect");
 const productModel = require("./models/product.model");
