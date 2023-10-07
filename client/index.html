@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe</title>
+    <style>
+        body{
+            display: flex;
+            padding-top: 100px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgb(203, 17, 17);
+            background-color: black;
+        }
+        button {
+            background-color: white;
+            color: rgb(203, 17, 17);
+            padding: 15px 20px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Stripe Payment</h1>
+    <button id="paybtn">pay</button>
+   
+</body>
+<script>
+document.getElementById("paybtn").addEventListener("click",async(e)=>{
+    alert("clicked me")
+})
+</script>
+</html>
